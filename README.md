@@ -6,11 +6,6 @@
 [![MacOS Catalina](https://img.shields.io/badge/Catalina-10.15-red.svg)](https://www.apple.com/)
 [![MacOS Big Sur](https://img.shields.io/badge/Big_Sur-11.4-blue.svg)](https://www.apple.com/macos/big-sur/)
 [![MacOS Monterey](https://img.shields.io/badge/Monterey-12.0-purple.svg)](https://www.apple.com/macos/monterey-preview/)
-[![Release](https://img.shields.io/badge/Download-latest-brightgreen.svg)](https://github.com/banhbaoxamlan/X230-Hackintosh/releases/latest)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.7.1-blue.svg)](https://github.com/acidanthera/OpenCorePkg/releases/latest)
-[![Donate](https://img.shields.io/badge/-Buy%20me%20a%20coffee-orange.svg)](https://www.paypal.com/paypalme/thebinhluong0519)
-
-Sorry, I no longer use macOS on my X230. If a maintained fork is formed, it will be listed here.
 
 ## READ THE ENTIRE README.MD BEFORE YOU START
 
@@ -23,36 +18,6 @@ Sorry, I no longer use macOS on my X230. If a maintained fork is formed, it will
 - With every EFI update you retrieve from here please remember to go through the post install guide.
 
 #### Status : WIP
-
-> ## Update
-
-### Recent | [Changelog Archive](/Other/Changelog.md)
-
-## 2021-06-14
-
-### Added
-
-- `SidecarFixup.kext` for enable Sidecar.
-- `RestrictEvents.kext` for Process Blocker.
-- Repo
-  - `EFI-Install_USB` for installing and booting macOS first time.
-  - `README_MONTEREY` for MacOS Monterey.
-
-
-### Changed
-
-- `SSDT-HPET` : used `SSDTTime`.
-- `SSDT-PNLF` : remove `LEVD` not used.
-- `SSDT-PTWK` : fix typo.
-- `SSDT-THINK`: remove `WNTF` not used.
-- `SSDT-XOSI` : add `Windows`.
-- Disabled `SSDT-PTWK` and patch.
-- Updated OpenCore 0.7.1 to the latest commit.
-- Updated kexts to nightly for support MacOS 12.
-
-### Removed
-
-- `XHCI to XHC` rename.
 
 <details>
 <summary><strong> SUMMARY </strong></summary>
@@ -118,23 +83,6 @@ Sorry, I no longer use macOS on my X230. If a maintained fork is formed, it will
 </details>
 
 <details>
-<summary><strong> REFERENCES </strong></summary>
-<br>
-
-Read these before you start:
-
-- [dortania's Hackintosh guides](https://github.com/dortania).
-- [dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
-- [dortania's OpenCore Post Install Guide](https://dortania.github.io/OpenCore-Post-Install/).
-- [dortania/ Getting Started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/).
-- [dortania/ opencore `multiboot`](https://github.com/dortania/OpenCore-Multiboot).
-- [dortania/ `USB map` guide](https://dortania.github.io/OpenCore-Post-Install/usb/).
-- [WhateverGreen Intel HD Manual](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md).
-- `Configuration.pdf` and `Differences.pdf` in each `OpenCore` releases.
-
-</details>
-
-<details>
 <summary><strong> REQUIREMENTS </strong></summary>
 <br>
 
@@ -156,10 +104,10 @@ Read these before you start:
 
 | Category  | THINKPAD X230            | THINKPAD T530            | THINKPAD T430s            |
 | --------- | ------------------------ | ------------------------ | ------------------------- |
-| CPU       | Intel Core i5-3320M      | Intel Core i5-3320M      |  Intel Core i7-3520M      |
-| SSD       | Samsung 870 Evo 250GB    | SanDisk A400 256GB       |  Samsung 870 Evo 256GB    |
-| Display   | 12.5' IPS HD (1366x1768) | 15.6' TN FHD (1920x1080) |  14' TN HD+ (1600x900)    |
-| WiFi & BT | Intel Wireless-AC 7260   | DW1550 (BCM94352HMB)     |  Intel Centrino N-6205    |
+| CPU       | Intel Core i5-3380M      | Intel Core i5-3320M      | Intel Core i7-3520M       |
+| SSD       | Kingston 480GB           | SanDisk A400 256GB       | Samsung 870 Evo 256GB     |
+| Display   | 12.5' TN HD (1366x1768)  | 15.6' TN FHD (1920x1080) | 14' TN HD+ (1600x900)     |
+| WiFi & BT | Intel Wireless-AC 6205   | DW1550 (BCM94352HMB)     | Intel Centrino N-6205     |
 
 - Refer to [X230-Platform_Specifications](https://psref.lenovo.com/syspool/Sys/PDF/withdrawnbook/ThinkPad_X230.pdf) for possible stock ThinkPad X230 configurations.
 
@@ -181,45 +129,15 @@ Before you do anything, please familiarize yourself with basic Hackintosh termin
 <summary><strong> BENCHMARKS </strong></summary>
 </br>
 
-- macOS 11.4, EFI OpenCore 0.7.1
+- macOS 12.7.5, EFI OpenCore 0.9.9
 
 | CPU            | Single-Core | Multi-Core |
 | :------------- | ----------: | ---------: |
 | Cinebench R23  |             |       1576 |
-| Geekbench 5    |         694 |       1421 |
+| Geekbench 5    |         732 |       1529 |
 
 | GPU            | OpenCL      | Metal      |
 | :------------- | ----------: | ---------: |
 | Geekbench 5    |        1028 |        193 |
-
-</details>
-
-<details>
-<summary><strong> OTHER REPOSITORIES </strong></summary>
-<br>
-
-- X230-hackintosh repositories:
-  - [i0Ek3/X230-Hackintosh-Backup](https://github.com/i0Ek3/X230-Hackintosh-Backup).
-
-</details>
-
-> ## CONTACT
-
-- Email: thebinhluong0519@gmail.com
-- Telegram: +84 (867)-450-107
-
-> ## SUPPORT
-
-<details>
-<summary><strong> CREDITS </strong></summary>
-<br>
-
-- [Apple](https://www.apple.com) for macOS.
-- [Acidanthera](https://github.com/acidanthera) for all the kexts/utilities that they made.
-- [Rehabman](https://github.com/RehabMan) and [Daliansky](https://github.com/daliansky) for the patches and guides and kexts.
-- [George Kushnir](https://github.com/n4ru) for modified BIOS.
-- [Dortania](https://github.com/dortania) for for the OpenCore Install Guide.
-- [simprecicchiani](https://github.com/simprecicchiani) for inspirational ThinkPad configurations.
-- [zhen-zen](https://github.com/zhen-zen) for **YogaSMC**.
 
 </details>
