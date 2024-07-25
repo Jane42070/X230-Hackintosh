@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>#Info</key>
-	<dict>
-		<key>CPU Family: Ivy Bridge</key>
-		<string></string>
-		<key>Required additions for running macOS 12+ on Wintel Systems</key>
-		<string></string>
-		<key>Systems: Desktops/Laptops</key>
-		<string></string>
-	</dict>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
@@ -116,7 +107,7 @@
 		<array>
 			<dict>
 				<key>All</key>
-				<true/>
+				<false/>
 				<key>Comment</key>
 				<string>Delete CpuPm</string>
 				<key>Enabled</key>
@@ -134,7 +125,7 @@
 			</dict>
 			<dict>
 				<key>All</key>
-				<true/>
+				<false/>
 				<key>Comment</key>
 				<string>Delete Cpu0Ist</string>
 				<key>Enabled</key>
@@ -659,7 +650,7 @@
 			<key>ResetHwSig</key>
 			<false/>
 			<key>ResetLogoStatus</key>
-			<false/>
+			<true/>
 			<key>SyncTableIds</key>
 			<false/>
 		</dict>
@@ -667,9 +658,56 @@
 	<key>Booter</key>
 	<dict>
 		<key>MmioWhitelist</key>
-		<array/>
+		<array>
+			<dict>
+				<key>Address</key>
+				<integer>4275159040</integer>
+				<key>Comment</key>
+				<string>Haswell: SB_RCBA is a 0x4 page memory region, containing SPI_BASE at 0x3800 (SPI_BASE_ADDRESS)</string>
+				<key>Enabled</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>Address</key>
+				<integer>4278190080</integer>
+				<key>Comment</key>
+				<string>Generic: PCI root is a 0x1000 page memory region used by some types of firmware</string>
+				<key>Enabled</key>
+				<false/>
+			</dict>
+		</array>
 		<key>Patch</key>
 		<array>
+			<dict>
+				<key>Arch</key>
+				<string>Any</string>
+				<key>Comment</key>
+				<string>macOS to hacOS</string>
+				<key>Count</key>
+				<integer>1</integer>
+				<key>Enabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				bWFjT1M=
+				</data>
+				<key>Identifier</key>
+				<string>Apple</string>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>Replace</key>
+				<data>
+				aGFjT1M=
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+			</dict>
 			<dict>
 				<key>Arch</key>
 				<string>x86_64</string>
@@ -693,38 +731,6 @@
 				<key>Replace</key>
 				<data>
 				TwBDAF8AQgBJAEQA
-				</data>
-				<key>ReplaceMask</key>
-				<data>
-				</data>
-				<key>Skip</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>x86_64</string>
-				<key>Comment</key>
-				<string>Skip Board ID check</string>
-				<key>Count</key>
-				<integer>0</integer>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				AFAAbABhAHQAZgBvAHIAbQBTAHUAcABwAG8AcgB0AC4A
-				cABsAGkAcwB0
-				</data>
-				<key>Identifier</key>
-				<string>Apple</string>
-				<key>Limit</key>
-				<integer>0</integer>
-				<key>Mask</key>
-				<data>
-				</data>
-				<key>Replace</key>
-				<data>
-				AC4ALgAuAC4ALgAuAC4ALgAuAC4ALgAuAC4ALgAuAC4A
-				LgAuAC4ALgAu
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -1658,64 +1664,52 @@
 			<string></string>
 		</dict>
 		<key>Force</key>
-		<array/>
+		<array>
+			<dict>
+				<key>Arch</key>
+				<string>Any</string>
+				<key>BundlePath</key>
+				<string>System/Library/Extensions/IONetworkingFamily.kext</string>
+				<key>Comment</key>
+				<string></string>
+				<key>Enabled</key>
+				<false/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/IONetworkingFamily</string>
+				<key>Identifier</key>
+				<string>com.apple.iokit.IONetworkingFamily</string>
+				<key>MaxKernel</key>
+				<string>13.99.99</string>
+				<key>MinKernel</key>
+				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+		</array>
 		<key>Patch</key>
 		<array>
 			<dict>
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>Base</key>
-				<string>_apfs_filevault_allowed</string>
+				<string>__ZL22_vnode_check_signatureP5vnodeP5labeliP7cs_blobPjS5_ijPPcPm</string>
 				<key>Comment</key>
-				<string>Force FileVault on Broken Seal</string>
+				<string>Disable _csr_check() in _vnode_check_signature</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
+				AQAAAOgAAAAAhcB1
 				</data>
 				<key>Identifier</key>
-				<string>com.apple.filesystems.apfs</string>
+				<string>com.apple.driver.AppleMobileFileIntegrity</string>
 				<key>Limit</key>
 				<integer>0</integer>
 				<key>Mask</key>
 				<data>
-				</data>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string>20.4.0</string>
-				<key>Replace</key>
-				<data>
-				uAEAAADD
-				</data>
-				<key>ReplaceMask</key>
-				<data>
-				</data>
-				<key>Skip</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>x86_64</string>
-				<key>Base</key>
-				<string>_authenticate_root_hash</string>
-				<key>Comment</key>
-				<string>Disable Root Hash validation</string>
-				<key>Count</key>
-				<integer>0</integer>
-				<key>Enabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				</data>
-				<key>Identifier</key>
-				<string>com.apple.filesystems.apfs</string>
-				<key>Limit</key>
-				<integer>0</integer>
-				<key>Mask</key>
-				<data>
+				//////8AAAAA////
 				</data>
 				<key>MaxKernel</key>
 				<string></string>
@@ -1723,7 +1717,7 @@
 				<string>22.0.0</string>
 				<key>Replace</key>
 				<data>
-				uAAAAADD
+				AQAAALgBAAAAhcB1
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -1770,24 +1764,22 @@
 				<key>Arch</key>
 				<string>x86_64</string>
 				<key>Base</key>
-				<string>__ZL22_vnode_check_signatureP5vnodeP5labeliP7cs_blobPjS5_ijPPcPm</string>
+				<string>_authenticate_root_hash</string>
 				<key>Comment</key>
-				<string>Disable _csr_check() in _vnode_check_signature</string>
+				<string>Disable Root Hash validation</string>
 				<key>Count</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
 				<data>
-				AQAAAOgAAAAAhcB1
 				</data>
 				<key>Identifier</key>
-				<string>com.apple.driver.AppleMobileFileIntegrity</string>
+				<string>com.apple.filesystems.apfs</string>
 				<key>Limit</key>
 				<integer>0</integer>
 				<key>Mask</key>
 				<data>
-				//////8AAAAA////
 				</data>
 				<key>MaxKernel</key>
 				<string></string>
@@ -1795,7 +1787,42 @@
 				<string>22.0.0</string>
 				<key>Replace</key>
 				<data>
-				AQAAALgBAAAAhcB1
+				uAAAAADD
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>Arch</key>
+				<string>x86_64</string>
+				<key>Base</key>
+				<string>_apfs_filevault_allowed</string>
+				<key>Comment</key>
+				<string>Force FileVault on Broken Seal</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				</data>
+				<key>Identifier</key>
+				<string>com.apple.filesystems.apfs</string>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string>20.4.0</string>
+				<key>Replace</key>
+				<data>
+				uAEAAADD
 				</data>
 				<key>ReplaceMask</key>
 				<data>
@@ -1860,7 +1887,7 @@
 			<key>FuzzyMatch</key>
 			<true/>
 			<key>KernelArch</key>
-			<string>x86_64</string>
+			<string>Auto</string>
 			<key>KernelCache</key>
 			<string>Auto</string>
 		</dict>
@@ -1905,11 +1932,11 @@
 		<key>Debug</key>
 		<dict>
 			<key>AppleDebug</key>
-			<true/>
+			<false/>
 			<key>ApplePanic</key>
-			<true/>
+			<false/>
 			<key>DisableWatchDog</key>
-			<true/>
+			<false/>
 			<key>DisplayDelay</key>
 			<integer>0</integer>
 			<key>DisplayLevel</key>
@@ -2013,15 +2040,17 @@
 				<key>Auxiliary</key>
 				<true/>
 				<key>Comment</key>
-				<string>ControlMsrE2.efi</string>
+				<string>Not signed for security reasons</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Flavour</key>
-				<string>Auto</string>
+				<string>OpenShell:UEFIShell:Shell</string>
+				<key>FullNvramAccess</key>
+				<false/>
 				<key>Name</key>
-				<string>ControlMsrE2.efi</string>
+				<string>UEFI Shell</string>
 				<key>Path</key>
-				<string>ControlMsrE2.efi</string>
+				<string>OpenShell.efi</string>
 				<key>RealPath</key>
 				<false/>
 				<key>TextMode</key>
@@ -2033,15 +2062,17 @@
 				<key>Auxiliary</key>
 				<true/>
 				<key>Comment</key>
-				<string>OpenShell.efi</string>
+				<string>ControlMsrE2.efi</string>
 				<key>Enabled</key>
 				<true/>
 				<key>Flavour</key>
 				<string>Auto</string>
+				<key>FullNvramAccess</key>
+				<false/>
 				<key>Name</key>
-				<string>OpenShell.efi</string>
+				<string>ControlMsrE2.efi</string>
 				<key>Path</key>
-				<string>OpenShell.efi</string>
+				<string>ControlMsrE2.efi</string>
 				<key>RealPath</key>
 				<false/>
 				<key>TextMode</key>
@@ -2074,14 +2105,16 @@
 			</dict>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
+				<key>#INFO (prev-lang:kbd)</key>
+				<string>en:252 (ABC), set 656e3a323532</string>
+				<key>boot-args</key>
+				<string>-no_compat_check keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
 				<key>ForceDisplayRotationInEFI</key>
 				<integer>0</integer>
 				<key>SystemAudioVolume</key>
 				<data>
 				Rg==
 				</data>
-				<key>boot-args</key>
-				<string>keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
 				<key>csr-active-config</key>
 				<data>
 				AwgAAA==
@@ -2102,14 +2135,10 @@
 			<key>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</key>
 			<array>
 				<string>rtc-blacklist</string>
-				<string>OCLP-Settings</string>
-				<string>revblock</string>
-				<string>revpatch</string>
 			</array>
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<array>
 				<string>boot-args</string>
-				<string>csr-active-config</string>
 				<string>ForceDisplayRotationInEFI</string>
 			</array>
 		</dict>
@@ -2155,25 +2184,25 @@
 			<key>AdviseFeatures</key>
 			<false/>
 			<key>MLB</key>
-			<string>C02752200J9GDVV1F</string>
+			<string>C02226310CDF16PFB</string>
 			<key>MaxBIOSVersion</key>
 			<false/>
 			<key>ProcessorType</key>
-			<integer>1537</integer>
+			<integer>0</integer>
 			<key>ROM</key>
 			<data>
-			JKLhPHm3
+			PKuOeYBP
 			</data>
 			<key>SpoofVendor</key>
 			<true/>
 			<key>SystemMemoryStatus</key>
 			<string>Auto</string>
 			<key>SystemProductName</key>
-			<string>MacBookPro12,1</string>
+			<string>MacBookPro10,2</string>
 			<key>SystemSerialNumber</key>
-			<string>C02VW05HH1DP</string>
+			<string>C02HXAZYDR53</string>
 			<key>SystemUUID</key>
-			<string>EF9FEBEB-8805-4A06-9581-F807C4B5A4BF</string>
+			<string>4AE52E32-CFA2-4088-8C86-3128E110439B</string>
 		</dict>
 		<key>Automatic</key>
 		<true/>
@@ -2235,11 +2264,11 @@
 		<key>AppleInput</key>
 		<dict>
 			<key>AppleEvent</key>
-			<string>Auto</string>
+			<string>Builtin</string>
 			<key>CustomDelays</key>
 			<false/>
 			<key>GraphicsInputMirroring</key>
-			<false/>
+			<true/>
 			<key>KeyInitialDelay</key>
 			<integer>50</integer>
 			<key>KeySubsequentDelay</key>
@@ -2270,7 +2299,7 @@
 			<key>AudioOutMask</key>
 			<integer>1</integer>
 			<key>AudioSupport</key>
-			<true/>
+			<false/>
 			<key>DisconnectHda</key>
 			<false/>
 			<key>MaximumGain</key>
@@ -2558,7 +2587,32 @@
 			<false/>
 		</dict>
 		<key>ReservedMemory</key>
-		<array/>
+		<array>
+			<dict>
+				<key>Address</key>
+				<integer>268435456</integer>
+				<key>Comment</key>
+				<string>HD3000: IGPU memory corruption errata</string>
+				<key>Enabled</key>
+				<false/>
+				<key>Size</key>
+				<integer>268435456</integer>
+				<key>Type</key>
+				<string>Reserved</string>
+			</dict>
+			<dict>
+				<key>Address</key>
+				<integer>569344</integer>
+				<key>Comment</key>
+				<string>Fix black screen on wake from hibernation for Lenovo Thinkpad T490</string>
+				<key>Enabled</key>
+				<false/>
+				<key>Size</key>
+				<integer>4096</integer>
+				<key>Type</key>
+				<string>RuntimeCode</string>
+			</dict>
+		</array>
 	</dict>
 </dict>
 </plist>
