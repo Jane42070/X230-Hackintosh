@@ -90,7 +90,7 @@
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>Path</key>
 				<string>SSDT-USBX.aml</string>
 			</dict>
@@ -1062,42 +1062,6 @@
 				<key>Arch</key>
 				<string>Any</string>
 				<key>BundlePath</key>
-				<string>USBToolBox.kext</string>
-				<key>Comment</key>
-				<string></string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/USBToolBox</string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>Any</string>
-				<key>BundlePath</key>
-				<string>UTBMap.kext</string>
-				<key>Comment</key>
-				<string></string>
-				<key>Enabled</key>
-				<false/>
-				<key>ExecutablePath</key>
-				<string></string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>MinKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>Arch</key>
-				<string>Any</string>
-				<key>BundlePath</key>
 				<string>SMCBatteryManager.kext</string>
 				<key>Comment</key>
 				<string></string>
@@ -1534,7 +1498,7 @@
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>ExecutablePath</key>
 				<string></string>
 				<key>MaxKernel</key>
@@ -2061,15 +2025,15 @@
 				<key>Comment</key>
 				<string>Memory testing utility</string>
 				<key>Enabled</key>
-				<false/>
+				<true/>
 				<key>Flavour</key>
 				<string>MemTest</string>
 				<key>FullNvramAccess</key>
 				<false/>
 				<key>Name</key>
-				<string>memtest86</string>
+				<string>memtest64</string>
 				<key>Path</key>
-				<string>memtest86/BOOTX64.efi</string>
+				<string>memtest64.efi</string>
 				<key>RealPath</key>
 				<true/>
 				<key>TextMode</key>
@@ -2127,7 +2091,7 @@
 				<key>#INFO (prev-lang:kbd)</key>
 				<string>en:252 (ABC), set 656e3a323532</string>
 				<key>#boot-args 2</key>
-				<string>-no_compat_check keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
+				<string>-no_compat_check vm_compressor=2 keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
 				<key>ForceDisplayRotationInEFI</key>
 				<integer>0</integer>
 				<key>SystemAudioVolume</key>
@@ -2135,7 +2099,7 @@
 				Rg==
 				</data>
 				<key>boot-args</key>
-				<string>-no_compat_check keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
+				<string>-no_compat_check vm_compressor=2 keepsyms=1 gfxrst=1 amfi_get_out_of_my_way=0x1 ipc_control_port_options=0</string>
 				<key>csr-active-config</key>
 				<data>
 				AwgAAA==
